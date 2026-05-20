@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Permanent+Marker&family=Lacquer&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-horror: "Creepster", cursive;
+  --font-sans: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-grunge: "Lacquer", cursive;
+  --font-marker: "Permanent Marker", cursive;
+  
+  --color-toxic-green: #39ff14;
+  --color-spooky-orange: #ff5f1f;
+  --color-gothic-red: #d90429;
+  --color-dark-void: #030303;
+  --color-dark-slag: #0d0d0c;
+  --color-dark-glass: rgba(13, 13, 12, 0.7);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-dark-void);
+}
+::-webkit-scrollbar-thumb {
+  background: #222;
+  border-radius: 4px;
+  border: 2px solid var(--color-dark-void);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-toxic-green);
+}
+
+/* Base Body Vibe */
+body {
+  background-color: var(--color-dark-void);
+  color: #f3f4f6;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  cursor: default;
+}
+
+/* Custom Creepy Cursor Tail placeholder or subtle tracking */
+.glow-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--color-toxic-green);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, background-color 0.2s;
+  z-index: 9999;
+  box-shadow: 0 0 10px var(--color-toxic-green), inset 0 0 10px var(--color-toxic-green);
+}
+
+.glow-cursor-inner {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background-color: var(--color-spooky-orange);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+  box-shadow: 0 0 5px var(--color-spooky-orange);
+}
+
+/* Fog Drifting Overlay Animation */
+@keyframes fog-drift-left {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes fog-drift-right {
+  0% { transform: translateX(-55%); }
+  100% { transform: translateX(0%); }
+}
+
+.fog-layer-1 {
+  background-image: url('https://www.transparenttextures.com/patterns/fog.png');
+  animation: fog-drift-left 60s linear infinite;
+  opacity: 0.15;
+}
+
+.fog-layer-2 {
+  background-image: url('https://www.transparenttextures.com/patterns/fog.png');
+  animation: fog-drift-right 45s linear infinite;
+  opacity: 0.1;
+}
+
+/* Dripping/Grunge Font styles */
+.text-dripping {
+  font-family: var(--font-horror);
+  text-shadow: 0 0 5px rgba(0,0,0,0.8), 
+               0 0 10px rgba(57, 255, 20, 0.3),
+               0 10px 15px rgba(57, 255, 20, 0.4);
+  letter-spacing: 0.05em;
+}
+
+.text-dripping-orange {
+  font-family: var(--font-horror);
+  text-shadow: 0 0 5px rgba(0,0,0,0.8), 
+               0 0 10px rgba(255, 95, 31, 0.3),
+               0 10px 15px rgba(255, 95, 31, 0.4);
+  letter-spacing: 0.05em;
+}
+
+.glow-green {
+  text-shadow: 0 0 8px var(--color-toxic-green);
+}
+
+.glow-orange {
+  text-shadow: 0 0 8px var(--color-spooky-orange);
+}
+
+/* Pulsing toxic borders */
+.pulse-border-green {
+  box-shadow: 0 0 10px rgba(57,255,20,0.1);
+  border: 1px solid rgba(57,255,20,0.2);
+  transition: all 0.3s ease;
+}
+
+.pulse-border-green:hover {
+  box-shadow: 0 0 20px rgba(57,255,20,0.3);
+  border: 1px solid rgba(57,255,20,0.5);
+}
+
+.pulse-border-orange {
+  box-shadow: 0 0 10px rgba(255,95,31,0.1);
+  border: 1px solid rgba(255,95,31,0.2);
+  transition: all 0.3s ease;
+}
+
+.pulse-border-orange:hover {
+  box-shadow: 0 0 20px rgba(255,95,31,0.3);
+  border: 1px solid rgba(255,95,31,0.5);
+}
+
+/* Glassmorphism Eerie Card */
+.glass-card {
+  background: rgba(13, 13, 12, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Dripping Border effect */
+.dripping-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-toxic-green), var(--color-spooky-orange), var(--color-gothic-red), var(--color-toxic-green));
+  background-size: 300% 300%;
+  animation: gradient-shift 10s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Pumpkin flickering light */
+@keyframes pumpkin-flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow: 0 0 10px rgba(255, 95, 31, 0.6), 0 0 20px rgba(255, 95, 31, 0.4), 0 0 30px rgba(255, 95, 31, 0.2);
+  }
+  20%, 24%, 55% {
+    text-shadow: 0 0 2px rgba(255, 95, 31, 0.2), 0 0 4px rgba(255, 95, 31, 0.1);
+  }
+}
+
+.flicker-pumpkin {
+  animation: pumpkin-flicker 5s infinite alternate;
+}
+
+/* Flying bat animation details */
+@keyframes bat-fly {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(3deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.animate-bat {
+  animation: bat-fly 4s ease-in-out infinite;
+}
+
+/* Grunge paint dripping borders overlay SVG */
+.grunge-overlay {
+  background-image: radial-gradient(circle at 50% 50%, rgba(3, 3, 3, 0.1) 0%, rgba(3, 3, 3, 0.95) 85%);
+}
+
+.splatter-bkg {
+  background-image: radial-gradient(rgba(57, 255, 20, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+}

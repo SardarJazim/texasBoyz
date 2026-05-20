@@ -1,0 +1,6 @@
+{
+  "name": "Texas Boyz Detailing",
+  "description": "Premium Auto Detailing in Longview, TX with an edgy, horror-style street aesthetic.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
